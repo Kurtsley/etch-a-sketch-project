@@ -5,6 +5,11 @@ const INTIIAL_GRID_SIZE = 16;
 const container = document.querySelector(".container");
 const button = document.querySelector("button");
 
+function randomColor() {
+    let num = (Math.random() * 0xfffff * 1000000).toString(16);
+    return '#' + num.slice(0, 6);
+}
+
 function createGrid(grid_size) {
     // Remove existing rows
     container.innerHTML = '';
@@ -27,7 +32,8 @@ function createGrid(grid_size) {
 
     divs.forEach(div => {
         div.addEventListener("mouseenter", function() {
-            div.style.backgroundColor = "black";
+            const color = randomColor();
+            div.style.backgroundColor = color;
         });
     });
 }
